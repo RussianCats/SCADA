@@ -23,6 +23,12 @@ set(PROJECT_SOURCES
         iec60870.h
         iec60870client.cpp
         iec60870client.h
+        iec61850.cpp
+        iec61850.h
+        iec61850client.cpp
+        iec61850client.h
+        opc_ua.h
+        opc_ua.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -58,8 +64,10 @@ set_target_properties(SCADA PROPERTIES
     WIN32_EXECUTABLE TRUE
 )
 
-#команда для сборки lib60870
+#команда для сборки протоколов
 add_subdirectory(lib60870-C)
+add_subdirectory(libiec61850)
+add_subdirectory(opc_ua)
 
 install(TARGETS SCADA
     BUNDLE DESTINATION .
